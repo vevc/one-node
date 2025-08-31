@@ -17,27 +17,20 @@
         "decryption": "none",
         "clients": [
           {
-            "email": "hf-xhttp",
-            "flow": "",
-            "id": "UUID"
+            "id": "UUID",
+            "flow": "xtls-rprx-vision",
+            "level": 0,
+            "email": "hf@windroid.top"
           }
         ]
       },
       "streamSettings": {
-        "network": "xhttp",
-        "xhttpSettings": {
-          "host": "",
-          "mode": "auto",
-          "path": "/"
+        "network": "ws",
+        "wsSettings": {
+          "acceptProxyProtocol":true,
+          "path": "/hf"
         }
       },
-      "sniffing": {
-        "enabled": true,
-        "destOverride": [
-          "http",
-          "tls"
-        ]
-      }
     }
   ],
   "routing": {
