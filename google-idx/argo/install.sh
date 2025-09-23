@@ -16,7 +16,7 @@ fi
 wget -O startup.sh https://raw.githubusercontent.com/vevc/one-node/refs/heads/main/google-idx/argo/startup.sh
 sed -i 's#$PWD#'$PWD'#g' startup.sh
 if [ -n "$ARGO_TOKEN" ]; then
-  sed -i "s/ARGO_TOKEN=/ARGO_TOKEN=$ARGO_TOKEN/g" config.json
+  sed -i "s/ARGO_TOKEN=/ARGO_TOKEN=$ARGO_TOKEN/g" startup.sh
 fi
 chmod +x startup.sh
 
