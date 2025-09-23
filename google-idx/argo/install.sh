@@ -13,7 +13,7 @@ if [ ! -f cloudflared ]; then
 fi
 
 # 3. create startup.sh
-wget https://raw.githubusercontent.com/vevc/one-node/refs/heads/main/google-idx/argo/startup.sh
+wget -O startup.sh https://raw.githubusercontent.com/vevc/one-node/refs/heads/main/google-idx/argo/startup.sh
 sed -i 's#$PWD#'$PWD'#g' startup.sh
 if [ -n "$ARGO_TOKEN" ]; then
   sed -i "s/ARGO_TOKEN=/ARGO_TOKEN=$ARGO_TOKEN/g" config.json
