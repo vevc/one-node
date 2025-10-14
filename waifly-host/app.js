@@ -62,7 +62,7 @@ function runProcess(app) {
         const tunnelUrl = matches[matches.length - 1];
         ARGO_DOMAIN = new URL(tunnelUrl).hostname;
         subInfo[0] = `vless://${UUID}@${ARGO_DOMAIN}:443?encryption=none&security=tls&sni=${ARGO_DOMAIN}&fp=chrome&type=ws&path=%2F%3Fed%3D2560#${REMARKS_PREFIX}-ws-argo`;
-        fs.writeFile(path.join(__dirname, "node.txt"), subInfo.join('\n'));
+        fs.writeFile(path.join(__dirname, "node.txt"), subInfo.join('\n'), () => { });
       }
     };
     child.stdout.on("data", handleData);
