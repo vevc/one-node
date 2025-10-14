@@ -1,0 +1,9 @@
+listen: :10008
+
+tls:
+  cert: /home/container/h2/cert.pem
+  key: /home/container/h2/key.pem
+
+auth:
+  type: password
+  password: 'HY2_PASSWORD'

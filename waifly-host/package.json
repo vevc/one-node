@@ -1,0 +1,11 @@
+{
+  "name": "waifly-host",
+  "version": "1.0.0",
+  "description": "Xray & Hysteria2 Startup Script for Waifly Host",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "vevc",
+  "license": "MIT"
+}
