@@ -19,6 +19,7 @@ chmod +x cf
 
 mkdir -p /home/container/xy
 cd /home/container/xy
+rm -f *
 curl -sSL -o Xray-linux-64.zip https://github.com/XTLS/Xray-core/releases/download/v$XRAY_VERSION/Xray-linux-64.zip
 unzip Xray-linux-64.zip
 rm Xray-linux-64.zip
@@ -39,6 +40,7 @@ echo $realityUrl >> /home/container/node.txt
 
 mkdir -p /home/container/h2
 cd /home/container/h2
+rm -f *
 curl -sSL -o h2 https://github.com/apernet/hysteria/releases/download/app%2Fv$HY2_VERSION/hysteria-linux-amd64
 curl -sSL -o config.yaml https://raw.githubusercontent.com/vevc/one-node/refs/heads/dev/waifly-host/hysteria-config.yaml
 openssl req -x509 -newkey rsa:2048 -days 3650 -nodes -keyout key.pem -out cert.pem -subj "/CN=$DOMAIN"
