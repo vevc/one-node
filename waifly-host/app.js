@@ -59,7 +59,7 @@ if (ARGO_TOKEN) {
 // Run binary with keep-alive
 function runProcess(app) {
   const child = spawn(app.binaryPath, app.args, {
-    stdio: app.mode === "inherit" ? "inherit" : ["ignore", "pipe", "pipe"]
+    stdio: app.mode === "filter" ? ["ignore", "pipe", "pipe"] : app.mode
   });
 
   if (app.mode === "filter") {
