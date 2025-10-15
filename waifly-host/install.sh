@@ -34,9 +34,9 @@ publicKey=$(echo "$keyPair" | grep "Password" | awk '{print $2}')
 sed -i "s/YOUR_PRIVATE_KEY/$privateKey/g" config.json
 shortId=$(openssl rand -hex 4)
 sed -i "s/YOUR_SHORT_ID/$shortId/g" config.json
-wsUrl="vless://$UUID@$ARGO_DOMAIN:443?encryption=none&security=tls&fp=chrome&type=ws&path=%2F%3Fed%3D2560#waifly-ws-argo"
+wsUrl="vless://$UUID@$ARGO_DOMAIN:443?encryption=none&security=tls&fp=chrome&type=ws&path=%2F%3Fed%3D2560#$REMARKS_PREFIX-ws-argo"
 echo $wsUrl > /home/container/node.txt
-realityUrl="vless://$UUID@$DOMAIN:$PORT?encryption=none&flow=xtls-rprx-vision&security=reality&sni=www.cloudflare.com&fp=chrome&pbk=$publicKey&sid=$shortId&spx=%2F&type=tcp&headerType=none#waifly-reality"
+realityUrl="vless://$UUID@$DOMAIN:$PORT?encryption=none&flow=xtls-rprx-vision&security=reality&sni=www.cloudflare.com&fp=chrome&pbk=$publicKey&sid=$shortId&spx=%2F&type=tcp&headerType=none#$REMARKS_PREFIX-reality"
 echo $realityUrl >> /home/container/node.txt
 
 mkdir -p /home/container/h2
@@ -48,7 +48,7 @@ openssl req -x509 -newkey rsa:2048 -days 3650 -nodes -keyout key.pem -out cert.p
 chmod +x h2
 sed -i "s/10008/$PORT/g" config.yaml
 sed -i "s/HY2_PASSWORD/$UUID/g" config.yaml
-hy2Url="hysteria2://$UUID@$DOMAIN:$PORT?insecure=1#waifly-hy2"
+hy2Url="hysteria2://$UUID@$DOMAIN:$PORT?insecure=1#$REMARKS_PREFIX-hy2"
 echo $hy2Url >> /home/container/node.txt
 
 cd /home/container
