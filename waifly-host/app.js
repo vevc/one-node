@@ -9,6 +9,7 @@ const SHORT_ID = "YOUR_SHORT_ID";
 const PUBLIC_KEY = "YOUR_PUBLIC_KEY";
 let ARGO_DOMAIN = "YOUR_ARGO_DOMAIN";
 const ARGO_TOKEN = "";
+const REMARKS_PREFIX = "YOUR_REMARKS_PREFIX";
 
 // Binary and config definitions
 const apps = [
@@ -33,7 +34,6 @@ const apps = [
   }
 ];
 
-const REMARKS_PREFIX = "waifly";
 const subInfo = [
   `vless://${UUID}@${ARGO_DOMAIN}:443?encryption=none&security=tls&sni=${ARGO_DOMAIN}&fp=chrome&type=ws&path=%2F%3Fed%3D2560#${REMARKS_PREFIX}-ws-argo`,
   `vless://${UUID}@${DOMAIN}:${PORT}?encryption=none&flow=xtls-rprx-vision&security=reality&sni=www.cloudflare.com&fp=chrome&pbk=${PUBLIC_KEY}&sid=${SHORT_ID}&spx=%2F&type=tcp&headerType=none#${REMARKS_PREFIX}-reality`,

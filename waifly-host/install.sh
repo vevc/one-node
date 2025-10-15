@@ -8,6 +8,7 @@ PORT="${PORT:-10008}"
 UUID="${UUID:-$(cat /proc/sys/kernel/random/uuid)}"
 ARGO_DOMAIN="${ARGO_DOMAIN:-xxx.trycloudflare.com}"
 ARGO_TOKEN="${ARGO_TOKEN:-}"
+REMARKS_PREFIX="${REMARKS_PREFIX:-waifly}"
 
 curl -sSL -o app.js https://raw.githubusercontent.com/vevc/one-node/refs/heads/dev/waifly-host/app.js
 curl -sSL -o package.json https://raw.githubusercontent.com/vevc/one-node/refs/heads/dev/waifly-host/package.json
@@ -58,5 +59,6 @@ sed -i "s/YOUR_SHORT_ID/$shortId/g" app.js
 sed -i "s/YOUR_PUBLIC_KEY/$publicKey/g" app.js
 sed -i "s/YOUR_ARGO_DOMAIN/$ARGO_DOMAIN/g" app.js
 sed -i 's/ARGO_TOKEN = ""/ARGO_TOKEN = "'$ARGO_TOKEN'"/g' app.js
+sed -i "s/YOUR_REMARKS_PREFIX/$REMARKS_PREFIX/g" app.js
 
 echo "✅ Installation completed, enjoy it ~"
