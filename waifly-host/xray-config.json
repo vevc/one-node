@@ -37,13 +37,7 @@
             "email": "waifly-reality"
           }
         ],
-        "decryption": "none",
-        "fallbacks": [
-          {
-            "dest": 3000,
-            "xver": 0
-          }
-        ]
+        "decryption": "none"
       },
       "streamSettings": {
         "network": "raw",
