@@ -1,5 +1,4 @@
 const fs = require("fs");
-const http = require("http");
 const path = require("path");
 const { spawn } = require("child_process");
 
@@ -34,17 +33,28 @@ const apps = [
   }
 ];
 
-if (ARGO_TOKEN) {
-  apps[0].mode = "inherit";
-  apps[0].args = ["tunnel", "--no-autoupdate", "--edge-ip-version", "auto", "--protocol", "http2", "run", "--token", ARGO_TOKEN];
-}
-
 const REMARKS_PREFIX = "waifly";
 const subInfo = [
   `vless://${UUID}@${ARGO_DOMAIN}:443?encryption=none&security=tls&sni=${ARGO_DOMAIN}&fp=chrome&type=ws&path=%2F%3Fed%3D2560#${REMARKS_PREFIX}-ws-argo`,
   `vless://${UUID}@${DOMAIN}:${PORT}?encryption=none&flow=xtls-rprx-vision&security=reality&sni=www.cloudflare.com&fp=chrome&pbk=${PUBLIC_KEY}&sid=${SHORT_ID}&spx=%2F&type=tcp&headerType=none#${REMARKS_PREFIX}-reality`,
   `hysteria2://${UUID}@${DOMAIN}:${PORT}?insecure=1#${REMARKS_PREFIX}-hy2`
 ];
+
+// Print sub info
+function printSubInfo() {
+  console.log(
+    `============================================================
+🚀 WebSocket+Argo & Reality & HY2 Node Info
+------------------------------------------------------------
+${subInfo.join('\n')}
+============================================================`);
+}
+
+if (ARGO_TOKEN) {
+  apps[0].mode = "inherit";
+  apps[0].args = ["tunnel", "--no-autoupdate", "--edge-ip-version", "auto", "--protocol", "http2", "run", "--token", ARGO_TOKEN];
+  printSubInfo();
+}
 
 // Run binary with keep-alive
 function runProcess(app) {
@@ -63,6 +73,7 @@ function runProcess(app) {
         ARGO_DOMAIN = new URL(tunnelUrl).hostname;
         subInfo[0] = `vless://${UUID}@${ARGO_DOMAIN}:443?encryption=none&security=tls&sni=${ARGO_DOMAIN}&fp=chrome&type=ws&path=%2F%3Fed%3D2560#${REMARKS_PREFIX}-ws-argo`;
         fs.writeFile(path.join(__dirname, "node.txt"), subInfo.join('\n'), () => { });
+        printSubInfo();
       }
     };
     child.stdout.on("data", handleData);
@@ -89,28 +100,3 @@ function main() {
 }
 
 main();
-
-const port = 3000;
-
-const server = http.createServer((req, res) => {
-  if (req.url === "/") {
-    const welcomeInfo = `
-            <h3>Welcome</h3>
-            <p>You can visit <span style="font-weight: bold">/your-uuid</span> to view your node information, enjoy it ~</p>
-            <h3>GitHub (Give it a &#11088; if you like it!)</h3>
-            <a href="https://github.com/vevc/one-node" target="_blank" style="color: blue">https://github.com/vevc/one-nodejs</a>
-        `;
-    res.writeHead(200, { "Content-Type": "text/html" });
-    res.end(welcomeInfo);
-  } else if (req.url === `/${UUID}`) {
-    const rawContent = subInfo.join('\n');
-    return Buffer.from(rawContent).toString('base64');
-  } else {
-    res.writeHead(404, { "Content-Type": "text/plain" });
-    res.end("Not Found");
-  }
-});
-
-server.listen(port, () => {
-  console.log(`Server running on port ${port}`);
-});

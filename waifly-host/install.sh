@@ -59,10 +59,4 @@ sed -i "s/YOUR_PUBLIC_KEY/$publicKey/g" app.js
 sed -i "s/xxx.trycloudflare.com/$ARGO_DOMAIN/g" app.js
 sed -i 's/ARGO_TOKEN = ""/ARGO_TOKEN = "'$ARGO_TOKEN'"/g' app.js
 
-echo "============================================================"
-echo "🚀 VLESS Reality & HY2 Node Info"
-echo "------------------------------------------------------------"
-echo "$wsUrl"
-echo "$realityUrl"
-echo "$hy2Url"
-echo "============================================================"
+echo "✨ WebSocket+Argo & Reality & HY2 Node installation completed, enjoy it ~"
