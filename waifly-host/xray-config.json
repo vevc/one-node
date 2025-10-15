@@ -13,7 +13,7 @@
           {
             "id": "YOUR_UUID",
             "flow": "",
-            "email": "waifly-ws-argo"
+            "email": "ws-argo"
           }
         ]
       },
@@ -34,7 +34,7 @@
           {
             "id": "YOUR_UUID",
             "flow": "xtls-rprx-vision",
-            "email": "waifly-reality"
+            "email": "raw-reality"
           }
         ],
         "decryption": "none"
