@@ -2,12 +2,12 @@ const fs = require("fs");
 const path = require("path");
 const { spawn } = require("child_process");
 
-const DOMAIN = "node.waifly.com";
+const DOMAIN = "YOUR_DOMAIN";
 const PORT = 10008;
 const UUID = "YOUR_UUID";
 const SHORT_ID = "YOUR_SHORT_ID";
 const PUBLIC_KEY = "YOUR_PUBLIC_KEY";
-let ARGO_DOMAIN = "xxx.trycloudflare.com";
+let ARGO_DOMAIN = "YOUR_ARGO_DOMAIN";
 const ARGO_TOKEN = "";
 
 // Binary and config definitions

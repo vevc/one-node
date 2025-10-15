@@ -51,12 +51,12 @@ hy2Url="hysteria2://$UUID@$DOMAIN:$PORT?insecure=1#waifly-hy2"
 echo $hy2Url >> /home/container/node.txt
 
 cd /home/container
-sed -i "s/node.waifly.com/$DOMAIN/g" app.js
+sed -i "s/YOUR_DOMAIN/$DOMAIN/g" app.js
 sed -i "s/10008/$PORT/g" app.js
 sed -i "s/YOUR_UUID/$UUID/g" app.js
 sed -i "s/YOUR_SHORT_ID/$shortId/g" app.js
 sed -i "s/YOUR_PUBLIC_KEY/$publicKey/g" app.js
-sed -i "s/xxx.trycloudflare.com/$ARGO_DOMAIN/g" app.js
+sed -i "s/YOUR_ARGO_DOMAIN/$ARGO_DOMAIN/g" app.js
 sed -i 's/ARGO_TOKEN = ""/ARGO_TOKEN = "'$ARGO_TOKEN'"/g' app.js
 
 echo "✅ Installation completed, enjoy it ~"
