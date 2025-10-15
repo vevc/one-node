@@ -5,7 +5,7 @@ HY2_VERSION="${HY2_VERSION:-2.6.4}"
 ARGO_VERSION="${ARGO_VERSION:-2025.9.1}"
 DOMAIN="${DOMAIN:-node.waifly.com}"
 PORT="${PORT:-10008}"
-UUID="${UUID:-2584b733-9095-4bec-a7d5-62b473540f7a}"
+UUID="${UUID:-$(cat /proc/sys/kernel/random/uuid)}"
 ARGO_DOMAIN="${ARGO_DOMAIN:-xxx.trycloudflare.com}"
 ARGO_TOKEN="${ARGO_TOKEN:-}"
 
