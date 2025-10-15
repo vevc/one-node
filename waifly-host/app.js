@@ -51,7 +51,7 @@ ${subInfo.join('\n')}
 }
 
 if (ARGO_TOKEN) {
-  apps[0].mode = "inherit";
+  apps[0].mode = "ignore";
   apps[0].args = ["tunnel", "--no-autoupdate", "--edge-ip-version", "auto", "--protocol", "http2", "run", "--token", ARGO_TOKEN];
   printSubInfo();
 }
