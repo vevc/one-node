@@ -37,17 +37,23 @@
             "email": "waifly-reality"
           }
         ],
-        "decryption": "none"
+        "decryption": "none",
+        "fallbacks": [
+          {
+            "dest": 3000,
+            "xver": 0
+          }
+        ]
       },
       "streamSettings": {
         "network": "raw",
         "security": "reality",
         "realitySettings": {
           "show": false,
-          "target": "127.0.0.1:3000",
+          "target": "speed.cloudflare.com:443",
           "xver": 0,
           "serverNames": [
-            "www.cloudflare.com"
+            "speed.cloudflare.com"
           ],
           "privateKey": "YOUR_PRIVATE_KEY",
           "shortIds": [
