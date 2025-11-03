@@ -36,10 +36,10 @@ chmod +x backup.sh
 
 # Print access information
 ACCESS_URL="https://$DOMAIN$RANDOM_PATH"
-echo "==============================================="
+echo "============================================================"
 echo "✅ Service Ready – Access Information"
-echo "-----------------------------------------------"
+echo "------------------------------------------------------------"
 echo "📁 Path        : $RANDOM_PATH"
 echo "🧬 UUID        : $UUID"
 echo "🌐 Access URL  : $ACCESS_URL"
-echo "==============================================="
+echo "============================================================"
