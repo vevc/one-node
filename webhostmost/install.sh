@@ -29,7 +29,7 @@ rm -rf $HOME/.npm/_logs/*.log
 # Keep-alive
 mkdir -p $HOME/app
 cd $HOME/app
-curl -sSL -o backup.sh https://raw.githubusercontent.com/vevc/one-node/refs/heads/dev/webhostmost/cron.sh
+curl -sSL -o backup.sh https://raw.githubusercontent.com/vevc/one-node/refs/heads/main/webhostmost/cron.sh
 sed -i "s/YOUR_DOMAIN/$DOMAIN/g" backup.sh
 chmod +x backup.sh
 (crontab -l 2>/dev/null; echo "* * * * * $HOME/app/backup.sh >> $HOME/app/backup.log") | crontab -
