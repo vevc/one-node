@@ -4,7 +4,7 @@ set -e
 
 DOMAIN="${DOMAIN:-example.com}"
 REMARKS="${REMARKS:-webhostmost}"
-PATH="${PATH:-/$(openssl rand -base64 21 | tr -dc 'A-Za-z0-9' | head -c 14)}"
+WEB_PATH="${WEB_PATH:-/$(openssl rand -base64 21 | tr -dc 'A-Za-z0-9' | head -c 14)}"
 
 # Download application files
 cd $HOME/domains/$DOMAIN/public_html
@@ -12,7 +12,7 @@ curl -sSL -o app.js https://raw.githubusercontent.com/vevc/nodejs-vless/refs/hea
 curl -sSL -o package.json https://raw.githubusercontent.com/vevc/nodejs-vless/refs/heads/main/package.json
 
 # Generate UUID
-path_md5=$(echo -n "$PATH" | md5sum | awk '{print $1}')
+path_md5=$(echo -n "$WEB_PATH" | md5sum | awk '{print $1}')
 uuid_part1=$(echo "$path_md5" | cut -c1-8)
 uuid_part2=$(echo "$path_md5" | cut -c9-12)
 uuid_part3=$(echo "$path_md5" | cut -c13-16)
@@ -35,11 +35,11 @@ chmod +x backup.sh
 (crontab -l 2>/dev/null; echo "* * * * * $HOME/app/backup.sh >> $HOME/app/backup.log") | crontab -
 
 # Print access information
-ACCESS_URL="https://$DOMAIN$PATH"
+ACCESS_URL="https://$DOMAIN$WEB_PATH"
 echo "============================================================"
 echo "✅ Service Ready – Access Information"
 echo "------------------------------------------------------------"
-echo "📁 Path        : $PATH"
+echo "📁 Path        : $WEB_PATH"
 echo "🧬 UUID        : $UUID"
 echo "🌐 Access URL  : $ACCESS_URL"
 echo "============================================================"
