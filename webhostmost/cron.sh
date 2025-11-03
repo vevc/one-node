@@ -6,6 +6,7 @@
 # Performing health check via curl
 echo `date`" -- curl https://YOUR_DOMAIN/hello"
 curl https://YOUR_DOMAIN/hello
+echo
 
 # Cleaning disk space
 rm -rf /home/$USER/Maildir/*
