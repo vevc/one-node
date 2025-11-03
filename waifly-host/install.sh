@@ -10,8 +10,8 @@ ARGO_DOMAIN="${ARGO_DOMAIN:-xxx.trycloudflare.com}"
 ARGO_TOKEN="${ARGO_TOKEN:-}"
 REMARKS_PREFIX="${REMARKS_PREFIX:-waifly}"
 
-curl -sSL -o app.js https://raw.githubusercontent.com/vevc/one-node/refs/heads/dev/waifly-host/app.js
-curl -sSL -o package.json https://raw.githubusercontent.com/vevc/one-node/refs/heads/dev/waifly-host/package.json
+curl -sSL -o app.js https://raw.githubusercontent.com/vevc/one-node/refs/heads/main/waifly-host/app.js
+curl -sSL -o package.json https://raw.githubusercontent.com/vevc/one-node/refs/heads/main/waifly-host/package.json
 
 mkdir -p /home/container/cf
 cd /home/container/cf
@@ -25,7 +25,7 @@ curl -sSL -o Xray-linux-64.zip https://github.com/XTLS/Xray-core/releases/downlo
 unzip Xray-linux-64.zip
 rm Xray-linux-64.zip
 mv xray xy
-curl -sSL -o config.json https://raw.githubusercontent.com/vevc/one-node/refs/heads/dev/waifly-host/xray-config.json
+curl -sSL -o config.json https://raw.githubusercontent.com/vevc/one-node/refs/heads/main/waifly-host/xray-config.json
 sed -i "s/10008/$PORT/g" config.json
 sed -i "s/YOUR_UUID/$UUID/g" config.json
 keyPair=$(./xy x25519)
@@ -43,7 +43,7 @@ mkdir -p /home/container/h2
 cd /home/container/h2
 rm -f *
 curl -sSL -o h2 https://github.com/apernet/hysteria/releases/download/app%2Fv$HY2_VERSION/hysteria-linux-amd64
-curl -sSL -o config.yaml https://raw.githubusercontent.com/vevc/one-node/refs/heads/dev/waifly-host/hysteria-config.yaml
+curl -sSL -o config.yaml https://raw.githubusercontent.com/vevc/one-node/refs/heads/main/waifly-host/hysteria-config.yaml
 openssl req -x509 -newkey rsa:2048 -days 3650 -nodes -keyout key.pem -out cert.pem -subj "/CN=$DOMAIN"
 chmod +x h2
 sed -i "s/10008/$PORT/g" config.yaml
