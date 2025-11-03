@@ -27,7 +27,7 @@ $HOME/nodevenv/domains/$DOMAIN/public_html/22/bin/npm install
 rm -rf $HOME/.npm/_logs/*.log
 
 # Keep-alive
-mkdir $HOME/app
+mkdir -p $HOME/app
 cd $HOME/app
 curl -sSL -o backup.sh https://raw.githubusercontent.com/vevc/one-node/refs/heads/dev/webhostmost/cron.sh
 sed -i "s/YOUR_DOMAIN/$DOMAIN/g" backup.sh
