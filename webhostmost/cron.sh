@@ -1,11 +1,22 @@
 #!/bin/bash
 
+UUID='YOUR_UUID'
+DOMAIN='YOUR_DOMAIN'
+REMARKS='YOUR_REMARKS'
+
+cx_output="$($HOME/cx get --interpreter=nodejs --json)"
+if ! echo "$cx_output" | grep -q "UUID"; then
+    $HOME/cx create --json --interpreter=nodejs --user=`whoami` --app-root=$HOME/domains/$DOMAIN/public_html --app-uri=/ --version=22 --app-mode=Production --startup-file=app.js --env-vars='{"UUID":"'$UUID'","DOMAIN":"'$DOMAIN'","REMARKS":"'$REMARKS'","WEB_SHELL":"on"}'
+    $HOME/nodevenv/domains/$DOMAIN/public_html/22/bin/npm install
+    rm -rf $HOME/.npm/_logs/*.log
+fi
+
 # Clear log file
 > /home/$USER/app/backup.log
 
 # Performing health check via curl
-echo `date`" -- curl https://YOUR_DOMAIN/hello"
-curl https://YOUR_DOMAIN/hello
+echo `date`" -- curl https://$DOMAIN/hello"
+curl https://$DOMAIN/hello
 echo
 
 # Cleaning disk space

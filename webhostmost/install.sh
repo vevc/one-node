@@ -30,9 +30,15 @@ rm -rf $HOME/.npm/_logs/*.log
 mkdir -p $HOME/app
 cd $HOME/app
 curl -sSL -o backup.sh https://raw.githubusercontent.com/vevc/one-node/refs/heads/main/webhostmost/cron.sh
+sed -i "s/YOUR_UUID/$UUID/g" backup.sh
 sed -i "s/YOUR_DOMAIN/$DOMAIN/g" backup.sh
+sed -i "s/YOUR_REMARKS/$REMARKS/g" backup.sh
 chmod +x backup.sh
-(crontab -l 2>/dev/null; echo "* * * * * $HOME/app/backup.sh >> $HOME/app/backup.log") | crontab -
+
+cron_job="$HOME/app/backup.sh >> $HOME/app/backup.log"
+if ! crontab -l 2>/dev/null | grep -q "$cron_job"; then
+    (crontab -l 2>/dev/null; echo "* * * * * $HOME/app/backup.sh >> $HOME/app/backup.log") | crontab -
+fi
 
 # Print access information
 ACCESS_URL="https://$DOMAIN$WEB_PATH"
