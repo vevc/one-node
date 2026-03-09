@@ -1,0 +1,85 @@
+{
+  "log": {
+    "loglevel": "none",
+    "access": "none",
+    "error": "none"
+  },
+  "inbounds": [
+    {
+      "listen": null,
+      "port": 8080,
+      "protocol": "vless",
+      "settings": {
+        "decryption": "none",
+        "clients": [
+          {
+            "id": "YOUR_UUID",
+            "flow": "",
+            "email": "ws-argo"
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "none",
+        "wsSettings": {
+          "host": "",
+          "path": "/"
+        }
+      }
+    },
+    {
+      "port": 25575,
+      "protocol": "vless",
+      "settings": {
+        "clients": [
+          {
+            "id": "YOUR_UUID",
+            "flow": "xtls-rprx-vision",
+            "email": "raw-reality"
+          }
+        ],
+        "decryption": "none"
+      },
+      "streamSettings": {
+        "network": "raw",
+        "security": "reality",
+        "realitySettings": {
+          "show": false,
+          "target": "www.cloudflare.com:443",
+          "xver": 0,
+          "serverNames": [
+            "www.cloudflare.com"
+          ],
+          "privateKey": "YOUR_PRIVATE_KEY",
+          "shortIds": [
+            "YOUR_SHORT_ID"
+          ]
+        }
+      }
+    }
+  ],
+  "routing": {
+    "rules": [
+      {
+        "type": "field",
+        "domain": [
+          "v.com"
+        ],
+        "outboundTag": "force-to-ip"
+      }
+    ]
+  },
+  "outbounds": [
+    {
+      "protocol": "freedom"
+    },
+    {
+      "tag": "force-to-ip",
+      "protocol": "freedom",
+      "settings": {
+        "redirect": "127.0.0.1:0"
+      }
+    }
+  ]
+}

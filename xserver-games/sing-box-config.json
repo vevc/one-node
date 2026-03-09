@@ -1,0 +1,62 @@
+{
+  "log": {
+    "disabled": true,
+    "level": "info",
+    "timestamp": true
+  },
+  "inbounds": [
+    {
+      "type": "hysteria2",
+      "listen": "::",
+      "listen_port": 25565,
+      "users": [
+        {
+          "password": "YOUR_UUID"
+        }
+      ],
+      "tls": {
+        "enabled": true,
+        "alpn": [
+          "h3"
+        ],
+        "certificate_path": "YOUR_CERT",
+        "key_path": "YOUR_KEY"
+      }
+    },
+    {
+      "type": "tuic",
+      "listen": "::",
+      "listen_port": 25575,
+      "users": [
+        {
+          "uuid": "YOUR_UUID",
+          "password": "YOUR_UUID"
+        }
+      ],
+      "congestion_control": "bbr",
+      "tls": {
+        "enabled": true,
+        "alpn": [
+          "h3"
+        ],
+        "certificate_path": "YOUR_CERT",
+        "key_path": "YOUR_KEY"
+      }
+    }
+  ],
+  "route": {
+    "rules": [
+      {
+        "domain": "v.com",
+        "override_address": "127.0.0.1",
+        "outbound": "direct-out"
+      }
+    ]
+  },
+  "outbounds": [
+    {
+      "type": "direct",
+      "tag": "direct-out"
+    }
+  ]
+}
