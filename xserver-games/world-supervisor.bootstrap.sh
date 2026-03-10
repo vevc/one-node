@@ -126,20 +126,28 @@ programs:
   - name: xy
     directory: "$XY_DIR"
     command: ["sh", "$XY_DIR/startup.sh"]
+    autostart: true
+    autorestart: true
     logfile: "/dev/null"
 
   - name: td
     directory: "/home/xgame"
     command: ["sh", "$TD_DIR/startup.sh"]
+    autostart: true
+    autorestart: true
     logfile: "/dev/null"
 
   - name: cf
     command: ["sh", "$CF_DIR/startup.sh"]
+    autostart: true
+    autorestart: true
     logfile: "/dev/null"
 
   - name: sb
     directory: "$SB_DIR"
     command: ["sh", "$SB_DIR/startup.sh"]
+    autostart: true
+    autorestart: true
     logfile: "/dev/null"
 EOF
 
