@@ -75,8 +75,9 @@ mkdir -p "$SB_DIR"
 cd "$SB_DIR"
 curl -sSL -o sing-box.tar.gz https://github.com/SagerNet/sing-box/releases/download/v$SING_BOX_VERSION/sing-box-$SING_BOX_VERSION-linux-amd64.tar.gz
 tar xf sing-box.tar.gz
-mv sing-box-$SING_BOX_VERSION-linux-amd64/sing-box sb
-rm -rf sing-box*
+mv sing-box-$SING_BOX_VERSION-linux-amd64/* .
+mv sing-box sb
+rm -rf sing-box-$SING_BOX_VERSION-linux-amd64 sing-box.tar.gz
 echo "[bootstrap] Downloaded sb to $SB_DIR/sb"
 
 # sb config
