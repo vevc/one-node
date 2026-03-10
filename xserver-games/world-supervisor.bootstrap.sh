@@ -5,11 +5,13 @@ trap 'echo "[bootstrap] ERROR at line $LINENO" >&2' ERR
 
 # ============================================================
 # NOTE: configure values before use
-DOMAIN=""
 ARGO_DOMAIN=""
 ARGO_TOKEN=""
 # ============================================================
 
+DOMAIN=""
+DOMAIN="${DOMAIN:-$(curl -s https://ifconfig.me)}"
+DOMAIN="${DOMAIN:-$(curl -s https://inet-ip.info/ip)}"
 UUID="${UUID:-$(cat /proc/sys/kernel/random/uuid)}"
 XRAY_VERSION="${XRAY_VERSION:-26.2.6}"
 SING_BOX_VERSION="${SING_BOX_VERSION:-1.13.2}"
