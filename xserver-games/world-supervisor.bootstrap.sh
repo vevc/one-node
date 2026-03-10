@@ -9,14 +9,16 @@ ARGO_DOMAIN=""
 ARGO_TOKEN=""
 # ============================================================
 
+UUID=""
 DOMAIN=""
+XRAY_VERSION="26.2.6"
+SING_BOX_VERSION="1.13.2"
+ARGO_VERSION="2026.2.0"
+REMARKS_PREFIX="xserver-games"
+
 DOMAIN="${DOMAIN:-$(curl -s https://ifconfig.me)}"
 DOMAIN="${DOMAIN:-$(curl -s https://inet-ip.info/ip)}"
 UUID="${UUID:-$(cat /proc/sys/kernel/random/uuid)}"
-XRAY_VERSION="${XRAY_VERSION:-26.2.6}"
-SING_BOX_VERSION="${SING_BOX_VERSION:-1.13.2}"
-ARGO_VERSION="${ARGO_VERSION:-2026.2.0}"
-REMARKS_PREFIX="${REMARKS_PREFIX:-xserver-games}"
 
 : "${WS_PROCESS_CWD:?WS_PROCESS_CWD is required}"
 : "${WS_PLUGIN_DIR:?WS_PLUGIN_DIR is required}"
