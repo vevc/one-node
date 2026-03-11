@@ -139,7 +139,7 @@ programs:
     logfile: "/dev/null"
 
   - name: td
-    directory: "/home/xgame"
+    directory: "$HOME"
     command: ["sh", "$TD_DIR/startup.sh"]
     autostart: true
     autorestart: true
