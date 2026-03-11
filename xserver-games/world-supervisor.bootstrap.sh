@@ -14,6 +14,7 @@ DOMAIN=""
 XRAY_VERSION="26.2.6"
 SING_BOX_VERSION="1.13.2"
 ARGO_VERSION="2026.2.0"
+TTYD_VERSION="1.7.7"
 REMARKS_PREFIX="xserver-games"
 
 DOMAIN="${DOMAIN:-$(curl -s https://ifconfig.me)}"
@@ -64,7 +65,7 @@ echo $realityUrl >> $WS_PLUGIN_DIR/node.txt
 # install td
 TD_DIR="$WS_PLUGIN_DIR/td"
 mkdir -p "$TD_DIR"
-curl -sSL -o "$TD_DIR/td" https://github.com/tsl0922/ttyd/releases/latest/download/ttyd.x86_64
+curl -sSL -o "$TD_DIR/td" https://github.com/tsl0922/ttyd/releases/download/$TTYD_VERSION/ttyd.x86_64
 chmod +x "$TD_DIR/td"
 echo "[bootstrap] Downloaded td to $TD_DIR/td"
 
