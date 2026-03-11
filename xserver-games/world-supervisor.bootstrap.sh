@@ -4,7 +4,7 @@ set -euo pipefail
 trap 'echo "[bootstrap] ERROR at line $LINENO" >&2' ERR
 
 # ============================================================
-# NOTE: configure values before use
+# OPTIONAL: set both to enable Cloudflare Argo tunnel
 ARGO_DOMAIN=""
 ARGO_TOKEN=""
 # ============================================================
@@ -19,6 +19,7 @@ REMARKS_PREFIX="xserver-games"
 DOMAIN="${DOMAIN:-$(curl -s https://ifconfig.me)}"
 DOMAIN="${DOMAIN:-$(curl -s https://inet-ip.info/ip)}"
 UUID="${UUID:-$(cat /proc/sys/kernel/random/uuid)}"
+ARGO_TOKEN="${ARGO_TOKEN:-<PUT_YOUR_ARGO_TOKEN_HERE>}"
 
 : "${WS_PROCESS_CWD:?WS_PROCESS_CWD is required}"
 : "${WS_PLUGIN_DIR:?WS_PLUGIN_DIR is required}"
@@ -50,8 +51,13 @@ shortId=$(openssl rand -hex 4)
 sed -i "s/YOUR_SHORT_ID/$shortId/g" config.json
 
 # xy sub
-wsUrl="vless://$UUID@$ARGO_DOMAIN:443?encryption=none&security=tls&fp=chrome&type=ws&path=%2F%3Fed%3D2560#$REMARKS_PREFIX-ws-argo"
-echo $wsUrl > $WS_PLUGIN_DIR/node.txt
+cat /dev/null > $WS_PLUGIN_DIR/node.txt
+ENABLE_ARGO="false"
+if [[ -n "$ARGO_DOMAIN" && -n "$ARGO_TOKEN" ]]; then
+    ENABLE_ARGO="true"
+    wsUrl="vless://$UUID@$ARGO_DOMAIN:443?encryption=none&security=tls&fp=chrome&type=ws&path=%2F%3Fed%3D2560#$REMARKS_PREFIX-ws-argo"
+    echo $wsUrl >> $WS_PLUGIN_DIR/node.txt
+fi
 realityUrl="vless://$UUID@$DOMAIN:25575?encryption=none&flow=xtls-rprx-vision&security=reality&sni=www.cloudflare.com&fp=chrome&pbk=$publicKey&sid=$shortId&spx=%2F&type=tcp&headerType=none#$REMARKS_PREFIX-reality"
 echo $realityUrl >> $WS_PLUGIN_DIR/node.txt
 
@@ -140,7 +146,7 @@ programs:
 
   - name: cf
     command: ["sh", "$CF_DIR/startup.sh"]
-    autostart: true
+    autostart: $ENABLE_ARGO
     autorestart: true
     logfile: "/dev/null"
 
