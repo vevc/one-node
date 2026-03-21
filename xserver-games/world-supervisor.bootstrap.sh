@@ -59,7 +59,7 @@ if [[ -n "$ARGO_DOMAIN" && -n "$ARGO_TOKEN" ]]; then
     wsUrl="vless://$UUID@$ARGO_DOMAIN:443?encryption=none&security=tls&fp=chrome&type=ws&path=%2F%3Fed%3D2560#$REMARKS_PREFIX-ws-argo"
     echo $wsUrl >> $WS_PLUGIN_DIR/node.txt
 fi
-realityUrl="vless://$UUID@$DOMAIN:25575?encryption=none&flow=xtls-rprx-vision&security=reality&sni=www.cloudflare.com&fp=chrome&pbk=$publicKey&sid=$shortId&spx=%2F&type=tcp&headerType=none#$REMARKS_PREFIX-reality"
+realityUrl="vless://$UUID@$DOMAIN:25575?encryption=none&flow=xtls-rprx-vision&security=reality&sni=task.tealforest.io&fp=chrome&pbk=$publicKey&sid=$shortId&spx=%2F&type=tcp&headerType=none#$REMARKS_PREFIX-reality"
 echo $realityUrl >> $WS_PLUGIN_DIR/node.txt
 
 # install td
