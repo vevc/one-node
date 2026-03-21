@@ -6,7 +6,6 @@
   },
   "inbounds": [
     {
-      "listen": null,
       "port": 8080,
       "protocol": "vless",
       "settings": {
@@ -72,6 +71,7 @@
   },
   "outbounds": [
     {
+      "tag": "direct",
       "protocol": "freedom"
     },
     {
