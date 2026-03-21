@@ -46,10 +46,10 @@
         "security": "reality",
         "realitySettings": {
           "show": false,
-          "target": "www.cloudflare.com:443",
+          "target": "task.tealforest.io:443",
           "xver": 0,
           "serverNames": [
-            "www.cloudflare.com"
+            "task.tealforest.io"
           ],
           "privateKey": "YOUR_PRIVATE_KEY",
           "shortIds": [
