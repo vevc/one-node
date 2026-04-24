@@ -18,7 +18,7 @@ unzip -q Xray-linux-64.zip
 mv xray /usr/local/bin/xy
 rm -rf *
 
-curl -sSL -o xy.json https://raw.githubusercontent.com/vevc/cto-new/refs/heads/dev/xray-config.json
+curl -sSL -o xy.json https://raw.githubusercontent.com/vevc/one-node/refs/heads/dev/cto-new/xray-config.json
 sed -i "s/YOUR_UUID/$U/g" xy.json
 
 curl -sSL -o /usr/local/bin/cf https://github.com/cloudflare/cloudflared/releases/download/$ARGO_VERSION/cloudflared-linux-amd64
