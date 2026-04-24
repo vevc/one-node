@@ -2,13 +2,6 @@
 
 cd /home/team/shared
 
-cat > /home/team/shared/app.env <<EOF
-U=$U
-D=$D
-T=$T
-
-EOF
-
 XRAY_VERSION="26.3.27"
 ARGO_VERSION="2026.3.0"
 TTYD_VERSION="1.7.7"
@@ -43,14 +36,13 @@ WantedBy=multi-user.target
 EOF
 
 # cf startup
-cat > /etc/systemd/system/cf.service <<'EOF'
+cat > /etc/systemd/system/cf.service <<EOF
 [Unit]
 Description=cf
 After=network.target
 
 [Service]
-EnvironmentFile=/home/team/shared/app.env
-ExecStart=cf tunnel --no-autoupdate --edge-ip-version auto --protocol http2 run --token ${T}
+ExecStart=cf tunnel --no-autoupdate --edge-ip-version auto --protocol http2 run --token $T
 Restart=always
 
 [Install]
