@@ -88,6 +88,7 @@ services:
     environment:
       LANG: zh_CN.UTF-8
       ENABLE_CJK_FONT: 1
+      VNC_PASSWORD: '${P}'
 
 EOF
 docker compose up -d
