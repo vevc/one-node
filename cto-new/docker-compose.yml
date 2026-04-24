@@ -1,0 +1,12 @@
+services:
+  firefox:
+    image: jlesage/firefox
+    container_name: firefox
+    restart: unless-stopped
+    ports:
+      - '80:5800'
+    volumes:
+      - '/home/team/shared/firefox/config:/config:rw'
+    environment:
+      LANG: zh_CN.UTF-8
+      ENABLE_CJK_FONT: 1

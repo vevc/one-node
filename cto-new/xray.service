@@ -1,0 +1,11 @@
+# /etc/systemd/system/xy.service
+[Unit]
+Description=xy
+After=network.target
+
+[Service]
+ExecStart=/usr/local/bin/xy -c /home/team/shared/xy.json
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

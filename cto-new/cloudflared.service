@@ -1,0 +1,12 @@
+# /etc/systemd/system/cf.service
+[Unit]
+Description=cf
+After=network.target
+
+[Service]
+EnvironmentFile=/home/team/shared/app.env
+ExecStart=/usr/local/bin/cf tunnel --no-autoupdate --edge-ip-version auto --protocol http2 run --token ${T}
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
