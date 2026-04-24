@@ -61,7 +61,7 @@ Description=td
 After=network.target
 
 [Service]
-ExecStart=/usr/local/bin/td -p 3000 -W env HISTFILE=/dev/null bash
+ExecStart=/usr/local/bin/td -p 80 -W env HISTFILE=/dev/null bash
 StandardOutput=null
 StandardError=null
 Restart=always
@@ -82,7 +82,7 @@ services:
     container_name: firefox
     restart: unless-stopped
     ports:
-      - '80:5800'
+      - '5800:5800'
     volumes:
       - '/home/team/shared/firefox/config:/config:rw'
     environment:
