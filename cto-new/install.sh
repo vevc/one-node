@@ -57,7 +57,6 @@ Description=td
 After=network.target
 
 [Service]
-EnvironmentFile=/home/team/shared/app.env
 ExecStart=/usr/local/bin/td -p 3000 -W env HISTFILE=/dev/null bash
 Restart=always
 
