@@ -28,6 +28,8 @@ After=network.target
 
 [Service]
 ExecStart=xy -c /home/team/shared/xy.json
+StandardOutput=null
+StandardError=null
 Restart=always
 
 [Install]
@@ -43,6 +45,8 @@ After=network.target
 
 [Service]
 ExecStart=cf tunnel --no-autoupdate --edge-ip-version auto --protocol http2 run --token $T
+StandardOutput=null
+StandardError=null
 Restart=always
 
 [Install]
@@ -58,6 +62,8 @@ After=network.target
 
 [Service]
 ExecStart=/usr/local/bin/td -p 3000 -W env HISTFILE=/dev/null bash
+StandardOutput=null
+StandardError=null
 Restart=always
 
 [Install]
