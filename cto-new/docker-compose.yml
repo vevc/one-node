@@ -4,7 +4,7 @@ services:
     container_name: firefox
     restart: unless-stopped
     ports:
-      - '80:5800'
+      - '5800:5800'
     volumes:
       - '/home/team/shared/firefox/config:/config:rw'
     environment:
